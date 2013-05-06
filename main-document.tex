@@ -12,12 +12,6 @@
 % european character encoding & output (e.g. combine :a to ä)
 \usepackage[T1]{fontenc}
 
-\usepackage[scaled=0.9]{beramono}
-\usepackage{microtype}
-\newcommand\Small{\fontsize{8}{10}\selectfont}
-\newcommand*\LSTfont{%
-  \Small\ttfamily\SetTracking{encoding=*}{-50}\lsstyle}
-
 % input encoding charset (you want to write ä instead of \"a)
 \usepackage[utf8]{inputenc}
 
@@ -51,7 +45,6 @@
 % rename headline
 \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
 \renewcommand*\lstlistingname{Quellcode}
-
 
 % nice table with top-, mit & bottomrule
 \usepackage{booktabs}
