@@ -1,0 +1,127 @@
+% a science report
+\documentclass[12pt, a4paper, liststotoc, bibtotoc]{scrartcl}
+
+% set line spacing
+\usepackage{setspace}
+\onehalfspacing
+\typearea[current]{calc}
+
+% page configuration
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm, includefoot, footskip=1cm]{geometry}
+
+% european character encoding & output (e.g. combine :a to ä)
+\usepackage[T1]{fontenc}
+
+\usepackage[scaled=0.9]{beramono}
+\usepackage{microtype}
+\newcommand\Small{\fontsize{8}{10}\selectfont}
+\newcommand*\LSTfont{%
+  \Small\ttfamily\SetTracking{encoding=*}{-50}\lsstyle}
+
+% input encoding charset (you want to write ä instead of \"a)
+\usepackage[utf8]{inputenc}
+
+% a misssplitted words here
+\hyphenation{Nach-mit-ta-ge}
+
+% translate some parts into german, word-splitting
+\usepackage[ngerman]{babel}
+
+% use todo notes inside document
+\usepackage{todonotes}
+
+% necessary to 
+\usepackage[absolute]{textpos}
+
+% lists with smaller linespacing
+% use \beginn{itemize*} instead
+\usepackage{mdwlist}
+
+% bibliography settings
+% german quotes
+\usepackage[babel, german=guillemets]{csquotes}
+\usepackage[backend=bibtex8, style=authoryear-icomp, autocite=inline]{biblatex}
+\bibliography{/bib/bibliography}
+
+% necessary to use special characters and symbols
+\usepackage{amssymb}
+
+% necessary to include sourcecodes
+\usepackage[]{listings}
+% rename headline
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+\renewcommand*\lstlistingname{Quellcode}
+
+
+% nice table with top-, mit & bottomrule
+\usepackage{booktabs}
+
+% acronym package
+\usepackage[printonlyused]{acronym} 
+
+\usepackage{url}
+
+% meta data, bookmarks inside pdf
+\usepackage[bookmarksopen=true, bookmarksopenlevel=2, pdfusetitle=true]{hyperref}
+% end preambel
+
+% begin document
+\begin{document}
+
+% load custom title page
+\include{title-page}
+
+% start roman page numbering
+\pagenumbering{Roman}
+
+% create table of contents
+\newpage
+\tableofcontents
+\newpage
+
+% include abbreviation listing without pagebreak
+\section*{Abkürzungsverzeichnis}
+\begin{acronym}
+\input{acronyms}
+\end{acronym}
+
+% figure listing
+\listoffigures
+
+% table listing
+\listoftables
+
+% source code listing
+\lstlistoflistings
+
+\newpage
+
+% start roman page numbering
+\pagenumbering{arabic}
+
+
+% content part start
+% ##################
+
+\include{section/introduction}
+
+\include{section/basics}
+
+\include{section/part1}
+
+\include{section/conclusion}
+
+% content part end
+% ##################
+
+% create references
+\newpage
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\printbibliography[heading=bibintoc]
+
+\include{section/appendix}
+
+\include{deposition}
+
+
+\end{document}
